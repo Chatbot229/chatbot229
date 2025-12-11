@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Pro - Votre Assistant IA Sur Mesure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
+            --gray: #6c757d;
+            --trust-blue: #1e40af;
+            --trust-green: #10b981;
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--warning) 100%);
+            --gradient-success: linear-gradient(135deg, var(--success) 0%, #2ec4b6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            background-image: radial-gradient(var(--primary-light) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Promotion Banner */
+        .promo-banner {
+            background: var(--gradient-accent);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-banner 2s infinite;
+            box-shadow: 0 4px 15px rgba(248, 37, 133, 0.3);
+            margin-bottom: 10px;
+        }
+
+        @keyframes pulse-banner {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .promo-banner::before {
+            content: "🎄";
+            position: absolute;
+            left: 20px;
+            font-size: 1.5rem;
+        }
+
+        .promo-banner::after {
+            content: "🎁";
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            flex-wrap: wrap;
+            border-left: 5px solid var(--trust-green);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .trust-item i {
+            color: var(--trust-green);
+            font-size: 1.2rem;
+        }
+
+        .rating {
+            background: var(--gradient-success);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.2);
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: inline-block;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(248, 37, 133, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card:nth-child(2) .stat-number {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card:nth-child(3) .stat-number {
+            background: var(--gradient-success);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card:nth-child(4) .stat-number {
+            background: linear-gradient(135deg, #ff9a00 0%, #ff5e00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .form-section h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .form-section h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .form-group label i {
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: var(--dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Price Display */
+        .price-display {
+            background: #f0f9ff;
+            border: 2px dashed var(--primary-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 10px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .price-display.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .price-promo {
+            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 5px 0;
+        }
+
+        .price-saving {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Bouton WhatsApp */
+        .submit-btn {
+            background: linear-gradient(135deg, #25D366, #1da851);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px auto 0;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+                transform: scale(1);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+                transform: scale(1);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(76, 201, 240, 0.1);
+            border: 2px solid var(--success);
+            color: var(--dark);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--success);
+            animation: bounce 1s ease;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 60px 0;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "“";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-light);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Guarantees */
+        .guarantees {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        .guarantee-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .guarantee-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--dark);
+            color: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .form-section {
+                padding: 30px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-bar {
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .submit-btn {
+                padding: 18px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .trust-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+
+        /* Animation pour les champs de formulaire */
+        .form-group input:valid,
+        .form-group select:valid,
+        .form-group textarea:valid {
+            border-color: var(--success);
+        }
+
+        .form-group input:invalid:not(:focus):not(:placeholder-shown),
+        .form-group select:invalid:not(:focus),
+        .form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: var(--danger);
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Promotion Banner -->
+    <div class="promo-banner">
+        🎄 PROMO EXCEPTIONNELLE DE DÉCEMBRE : 50% DE RÉDUCTION SUR TOUS NOS CHATBOTS ! 🎁
+    </div>
+
+    <div class="container">
+        <!-- Trust Bar -->
+        <div class="trust-bar">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <span>99% de clients satisfaits</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-star"></i>
+                <span>4.8/5 sur 180 avis vérifiés</span>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Garantie satisfait ou remboursé 30 jours</span>
+            </div>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>Excellent sur Trustpilot</span>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>ChatBot Pro</h1>
+            <p>Transformez votre service client avec un assistant IA personnalisé. Augmentez vos ventes de 30% dès le premier mois avec notre promotion exclusive.</p>
+            
+            <div class="hero-image">
+                <!-- IMAGE GARANTIE QUI FONCTIONNE - Équipe souriante -->
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Équipe professionnelle souriante travaillant ensemble">
+            </div>
+            
+            <div class="cta-badge">
+                <i class="fas fa-gift"></i> PROMO DE DÉCEMBRE : 50% DE RÉDUCTION
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">+30%</div>
+                <div>Augmentation moyenne des ventes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24h/24</div>
+                <div>Service client permanent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">48h</div>
+                <div>Délai d'installation</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">180+</div>
+                <div>Clients satisfaits</div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Service Client 24h/24</h3>
+                <p>Vos clients sont servis à toute heure, même la nuit et le week-end.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Ventes Automatisées</h3>
+                <p>Conversion des visiteurs en clients sans intervention humaine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Multi-Plateformes</h3>
+                <p>Site web, WhatsApp, Facebook Messenger, Instagram.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Analytics Avancés</h3>
+                <p>Suivez les performances et optimisez vos conversions.</p>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <h2>Témoignages de nos clients</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Le chatbot a transformé notre service client. Nous avons augmenté nos ventes de 35% en seulement 2 mois. Incroyable!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Marie Dubois</h4>
+                            <p>Directrice, Boutique Élégance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Installation rapide, support réactif. Nos clients adorent l'interface et nous avons réduit notre temps de réponse de 80%."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info">
+                            <h4>Pierre Martin</h4>
+                            <p>Gérant, Restaurant Le Gourmet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "La meilleure décision marketing de l'année! Retour sur investissement en moins d'un mois. L'équipe ChatBot Pro est exceptionnelle."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Sophie Lambert</h4>
+                            <p>CEO, Agence Immobilière Prestige</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guarantees -->
+        <div class="guarantees">
+            <div class="guarantee-card">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Garantie 30 jours</h3>
+                <p>Satisfait ou remboursé sous 30 jours</p>
+            </div>
+            <div class="guarantee-card">
+                <div class="guarantee-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Support 7j/7</h3>
+                <p>Assistance technique et marketing incluse</p>
+            </div>
+            <div class="guarantee-card">
+                <div class="guarantee-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Mises à jour gratuites</h3>
+                <p>Évolution permanente de votre chatbot</p>
+            </div>
+            <div class="guarantee-card">
+                <div class="guarantee-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Données sécurisées</h3>
+                <p>Certification RGPD et sécurité maximale</p>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <h2>🚀 Commandez Votre Chatbot à -50%</h2>
+            
+            <form id="chatbotForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nomComplet"><i class="fas fa-user"></i> Nom Complet *</label>
+                        <input type="text" id="nomComplet" name="nomComplet" required placeholder="Votre nom complet">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entreprise"><i class="fas fa-building"></i> Nom de l'Entreprise *</label>
+                        <input type="text" id="entreprise" name="entreprise" required placeholder="Nom de votre entreprise">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Professionnel *</label>
+                        <input type="email" id="email" name="email" required placeholder="email@votre-entreprise.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telephone"><i class="fab fa-whatsapp"></i> Téléphone WhatsApp *</label>
+                        <input type="tel" id="telephone" name="telephone" required placeholder="+229 XX XX XX XX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="domaine"><i class="fas fa-briefcase"></i> Domaine d'Activité *</label>
+                        <select id="domaine" name="domaine" required>
+                            <option value="">Sélectionnez votre domaine</option>
+                            <option value="restaurant">🍽️ Restaurant / Café</option>
+                            <option value="boutique">🛍️ Boutique / E-commerce</option>
+                            <option value="salon">💇 Salon / Beauté</option>
+                            <option value="immobilier">🏠 Immobilier</option>
+                            <option value="sante">🏥 Santé / Médecine</option>
+                            <option value="education">🎓 Éducation / Formation</option>
+                            <option value="automobile">🚗 Automobile</option>
+                            <option value="tourisme">✈️ Tourisme / Hôtellerie</option>
+                            <option value="autre">🏢 Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="siteWeb"><i class="fas fa-globe"></i> Site Web (Optionnel)</label>
+                        <input type="url" id="siteWeb" name="siteWeb" placeholder="https://votre-site.com">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="utilisation"><i class="fas fa-tasks"></i> Utilisation Prévisionnelle *</label>
+                        <select id="utilisation" name="utilisation" required>
+                            <option value="">Comment utiliserez-vous le chatbot ?</option>
+                            <option value="ventes">🛒 Prise de commandes et ventes</option>
+                            <option value="support">🎯 Support client et FAQ</option>
+                            <option value="reservations">📅 Réservations et rendez-vous</option>
+                            <option value="leads">📞 Génération de leads</option>
+                            <option value="mixte">⚡ Mixte (ventes + support)</option>
+                            <option value="marketing">📢 Marketing et promotion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="budget"><i class="fas fa-money-bill-wave"></i> Budget Mensuel * (avec promotion de 50%)</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Sélectionnez une formule</option>
+                            <option value="30000">💰 Formule Essentiel - 30.000 FCFA/mois (au lieu de 60.000 FCFA)</option>
+                            <option value="45000">💎 Formule Professionnel - 45.000 FCFA/mois (au lieu de 90.000 FCFA)</option>
+                            <option value="60000">🚀 Formule Premium - 60.000 FCFA/mois (au lieu de 120.000 FCFA)</option>
+                            <option value="surmesure">🎯 Sur mesure (Devis personnalisé avec -50%)</option>
+                        </select>
+                        <div id="priceDisplay" class="price-display">
+                            <p class="price-original">Prix original: <span id="originalPrice"></span></p>
+                            <p class="price-promo">PROMO: <span id="promoPrice"></span> FCFA/mois</p>
+                            <p class="price-saving">Vous économisez 50% !</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="delai"><i class="fas fa-clock"></i> Délai de Mise en Place *</label>
+                        <select id="delai" name="delai" required>
+                            <option value="">Quand souhaitez-vous démarrer ?</option>
+                            <option value="urgent">⚡ Dès que possible (48h)</option>
+                            <option value="1semaine">📅 Dans 1 semaine</option>
+                            <option value="2semaines">🗓️ Dans 2 semaines</option>
+                            <option value="1mois">⏳ Dans 1 mois</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="besoins"><i class="fas fa-edit"></i> Besoins Spécifiques *</label>
+                        <textarea id="besoins" name="besoins" rows="4" required placeholder="Décrivez vos besoins spécifiques, vos produits/services, et ce que vous attendez du chatbot..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Obtenir mon chatbot à -50% sur WhatsApp
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Demande Envoyée avec Succès !</h3>
+                    <p>Je vous contacte dans les 30 minutes sur WhatsApp pour finaliser votre commande à -50%.</p>
+                    <p><strong>Promotion limitée à 10 clients ce mois-ci</strong></p>
+                </div>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 ChatBot Pro. Tous droits réservés.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+229 01 46 90 52 51</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@chatbotpro.bj</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Réponse garantie sous 1 heure</span>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-lock"></i> Vos données sont sécurisées et ne seront jamais partagées avec des tiers.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Prix originaux pour chaque option (en FCFA)
+        const originalPrices = {
+            "30000": "60.000 FCFA",
+            "45000": "90.000 FCFA", 
+            "60000": "120.000 FCFA",
+            "surmesure": "Sur devis"
+        };
+
+        // Affichage du prix avec promotion
+        document.getElementById('budget').addEventListener('change', function() {
+            const priceDisplay = document.getElementById('priceDisplay');
+            const selectedValue = this.value;
+            
+            if (selectedValue && selectedValue !== "surmesure") {
+                const originalPrice = originalPrices[selectedValue];
+                const promoPrice = parseInt(selectedValue).toLocaleString('fr-FR') + " FCFA";
+                
+                document.getElementById('originalPrice').textContent = originalPrice;
+                document.getElementById('promoPrice').textContent = promoPrice;
+                priceDisplay.classList.add('active');
+            } else if (selectedValue === "surmesure") {
+                document.getElementById('originalPrice').textContent = "Sur devis";
+                document.getElementById('promoPrice').textContent = "-50% appliqués";
+                priceDisplay.classList.add('active');
+            } else {
+                priceDisplay.classList.remove('active');
+            }
+        });
+
+        // Validation et envoi du formulaire WhatsApp
+        document.getElementById('chatbotForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des champs requis
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#e63946';
+                    field.style.animation = 'shake 0.5s ease';
+                    setTimeout(() => {
+                        field.style.animation = '';
+                    }, 500);
+                }
+            });
+            
+            if (!isValid) {
+                alert('Veuillez remplir tous les champs obligatoires (*)');
+                return;
+            }
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                nomComplet: document.getElementById('nomComplet').value,
+                entreprise: document.getElementById('entreprise').value,
+                email: document.getElementById('email').value,
+                telephone: document.getElementById('telephone').value,
+                domaine: document.getElementById('domaine').value,
+                siteWeb: document.getElementById('siteWeb').value,
+                utilisation: document.getElementById('utilisation').value,
+                besoins: document.getElementById('besoins').value,
+                budget: document.getElementById('budget').value,
+                delai: document.getElementById('delai').value
+            };
+
+            // Formater le prix pour l'affichage
+            let prixAffiche = formData.budget;
+            if (formData.budget !== "surmesure") {
+                prixAffiche = parseInt(formData.budget).toLocaleString('fr-FR') + " FCFA";
+            } else {
+                prixAffiche = "Sur mesure (devis personnalisé)";
+            }
+
+            // Créer le message WhatsApp détaillé avec emojis
+            const message = `🚀 **NOUVELLE COMMANDE CHATBOT - PROMO 50%** 🚀%0A%0A` +
+                           `🎄 *Promotion spéciale décembre activée !* %0A%0A` +
+                           `👤 **INFORMATIONS CLIENT**%0A` +
+                           `• 👤 Nom: ${formData.nomComplet}%0A` +
+                           `• 🏢 Entreprise: ${formData.entreprise}%0A` +
+                           `• 📧 Email: ${formData.email}%0A` +
+                           `• 📱 Téléphone: ${formData.telephone}%0A` +
+                           `• 🌐 Site web: ${formData.siteWeb || 'Non renseigné'}%0A%0A` +
+                           `🎯 **BESOINS PROFESSIONNELS**%0A` +
+                           `• 📊 Domaine: ${formData.domaine}%0A` +
+                           `• 🎯 Utilisation: ${formData.utilisation}%0A` +
+                           `• 💰 Formule choisie: ${prixAffiche}/mois (avec -50%)%0A` +
+                           `• ⏱️ Délai souhaité: ${formData.delai}%0A%0A` +
+                           `📝 **BESOINS SPÉCIFIQUES**%0A` +
+                           `${formData.besoins}%0A%0A` +
+                           `🔥 **CLIENT INTÉRESSÉ PAR LA PROMO 50% - CONTACTER IMMÉDIATEMENT !**%0A` +
+                           `⏰ *Promotion limitée à 10 clients seulement*`;
+            
+            // Numéro WhatsApp (VOTRE NUMÉRO)
+            const votreNumero = "2290146905251";
+            
+            // Vérifier si le numéro est valide (format international)
+            const phone = formData.telephone.replace(/\s/g, '');
+            if (!phone.startsWith('+')) {
+                alert('Veuillez entrer un numéro au format international (ex: +229 XX XX XX XX)');
+                return;
+            }
+            
+            // Ouvrir WhatsApp avec le message pré-rempli
+            window.open(`https://wa.me/${votreNumero}?text=${message}`, '_blank');
+            
+            // Afficher le message de succès
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Animation de succès
+            successMessage.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+            
+            // Optionnel: Réinitialiser le formulaire après 10 secondes
+            setTimeout(() => {
+                document.getElementById('chatbotForm').reset();
+                document.getElementById('priceDisplay').classList.remove('active');
+                successMessage.style.display = 'none';
+            }, 10000);
+            
+            // Suivi de conversion (simulé)
+            console.log('Conversion enregistrée:', formData);
+        });
+
+        // Animation d'apparition progressive
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.feature-card, .stat-card, .testimonial-card, .guarantee-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+
+            // Animation pour les champs de formulaire
+            const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+            formInputs.forEach((input, index) => {
+                input.style.opacity = '0';
+                input.style.transform = 'translateX(-20px)';
+                setTimeout(() => {
+                    input.style.transition = 'all 0.5s ease';
+                    input.style.opacity = '1';
+                    input.style.transform = 'translateX(0)';
+                }, 800 + index * 50);
+            });
+
+            // Effet de validation en temps réel
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.style.borderColor = '#4cc9f0';
+                    }
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value && this.hasAttribute('required')) {
+                        this.style.borderColor = '#e2e8f0';
+                    }
+                });
+            });
+            
+            // Précharger l'image pour éviter les problèmes
+            const img = new Image();
+            img.src = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80";
+        });
+
+        // Compteur de visiteurs (simulé pour créer un sentiment d'urgence)
+        window.addEventListener('load', function() {
+            const visitorCount = Math.floor(Math.random() * 20) + 15;
+            const countElement = document.createElement('div');
+            countElement.innerHTML = `<div style="position: fixed; bottom: 20px; right: 20px; background: var(--gradient-accent); color: white; padding: 15px; border-radius: 10px; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.2); font-size: 0.9rem;">
+                <i class="fas fa-users"></i> ${visitorCount} personnes consultent cette offre
+            </div>`;
+            document.body.appendChild(countElement);
+            
+            // Disparaît après 10 secondes
+            setTimeout(() => {
+                countElement.style.opacity = '0';
+                countElement.style.transition = 'opacity 1s ease';
+                setTimeout(() => countElement.remove(), 1000);
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
